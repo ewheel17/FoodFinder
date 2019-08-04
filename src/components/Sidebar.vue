@@ -1,6 +1,11 @@
 <template>
   <v-container>
-    hello
+    <v-layout
+      text-center
+      wrap
+    >
+      
+    </v-layout>
   </v-container>
 </template>
 
@@ -8,6 +13,6 @@
 import Vue from 'vue';
 
 export default Vue.extend({
-  components: {},
+
 });
 </script>
