@@ -14,7 +14,7 @@
 // }
 
 // Data returned from query above:
-export let restaurants = [
+export default [
   {
     id:1,
     name: 'Breken Kitchen',
