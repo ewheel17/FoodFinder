@@ -1,6 +1,7 @@
 <template>
   <v-layout v-if="$store.state.currentDisplay" wrap class="cardContainer" justify-center pa-3>
     <v-flex
+      v-if="$store.state.restaurants.length"
       v-for="restaurant in $store.state.restaurants"
       :key="restaurant.id"
       xs12
@@ -42,9 +43,12 @@
         </v-card-text>
       </v-card>
     </v-flex>
+    <v-flex text-center>
+      <h4>No matches found.</h4>
+    </v-flex>
   </v-layout>
   <v-layout v-else wrap class="cardContainer" justify-center pa-3>
-    <v-simple-table class="simpleTable">
+    <v-simple-table class="simpleTable" v-if="$store.state.restaurants.length">
       <thead>
         <tr>
           <th class="text-left">Name</th>
@@ -75,6 +79,9 @@
         </tr>
       </tbody>
     </v-simple-table>
+    <v-flex text-center v-else>
+      <h4>No matches found.</h4>
+    </v-flex>
   </v-layout>
 </template>
 
