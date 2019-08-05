@@ -1,14 +1,14 @@
 # FoodFinder
 
-## Contact Info
-Max Wheeler
-ewheel17@gmail.com
+### Contact Info
+Max Wheeler <br/>
+ewheel17@gmail.com <br/>
 
-## Technology Used
-Frontend Framework: Vue
-UI Library: Vuetify
-State Management: Vuex
-Language: Typescript
+### Technology Used
+Frontend Framework: Vue<br/>
+UI Library: Vuetify<br/>
+State Management: Vuex<br/>
+Language: Typescript<br/>
 
 ## Project setup
 ```
