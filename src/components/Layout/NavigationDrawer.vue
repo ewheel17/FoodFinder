@@ -5,6 +5,17 @@
     clipped
   >
     <v-layout column justify-center pa-5>
+      <v-flex xs11 hidden-md-and-up>
+        <v-text-field
+          v-model="inputSearch"
+          placeholder="Search..."
+          single-line
+          append-icon="search"
+          color="white"
+          hide-details
+          class="mb-5"
+        ></v-text-field>
+      </v-flex>
       <v-flex xs11 md7 justify-center>
         <label>Toggle View</label>
         <hr>
@@ -26,7 +37,7 @@
           <v-btn depressed small @click="sortRestaurants('type')">By Type</v-btn>
         </div>
       </v-flex>
-      <v-flex xs12>
+      <v-flex xs11>
         <label>Filter by Type</label>
         <hr>
         <v-checkbox
@@ -52,6 +63,7 @@ export default class NavigationDrawer extends Vue {
   private sortAlphaSwitch = false;
   private sortTypeSwitch = false;
   private selected = [];
+  private inputSearch = '';
 
   @Watch('viewSwitch')
   private toggleDisplay() {
@@ -61,6 +73,14 @@ export default class NavigationDrawer extends Vue {
   @Watch('selected')
   private setFilteredTypes() {
     this.$store.dispatch('setFilteredTypes', { selected: this.selected });
+  }
+
+  @Watch('inputSearch')
+  private searchRestaurants() {
+    const matchingRestaurants = this.$store.state.originalRestaurants.filter((item: any) => {
+      return item.name.toLowerCase().includes(this.inputSearch.toLowerCase());
+    });
+    this.$store.commit('setRestaurants', matchingRestaurants);
   }
 
   private sortRestaurants(sort: string) {

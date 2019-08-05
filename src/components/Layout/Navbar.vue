@@ -13,6 +13,7 @@
     <v-layout
       align-center
       style="max-width: 400px"
+      class="hidden-sm-and-down"
     >
       <v-text-field
         v-model="inputSearch"

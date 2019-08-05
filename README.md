@@ -3,7 +3,8 @@
 ### About
 FoodFinder is an application that displays given Restaurant data in a card or 
 list table format. The user is able to perform actions on the displayed data
-to refine their search.
+to refine their search. <br/>
+Site hosted at https://foodfindersite.netlify.com/.
 
 ### Contact Info
 Max Wheeler <br/>

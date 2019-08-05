@@ -15,6 +15,8 @@
           class="white--text"
           height="150px"
           :src="restaurant.image"
+          :class="restaurant.website ? 'restImage' : ''"
+          @click="navigateAway(restaurant.website)"
         >
           <v-chip
             class="align-end fill-height  ma-2"
@@ -29,7 +31,8 @@
         <v-card-text>
           <v-layout column>
             <v-flex xs12>
-              <span>Contact: </span> {{ restaurant.phone }}
+              <span>Contact: </span>         	
+              <a :href="'tel:' + restaurant.phone">{{ restaurant.phone }}</a>
             </v-flex>
             <v-flex xs12>
               <a v-if="restaurant.website" :href="restaurant.website" target="_blank"> Go to Website</a>
@@ -50,9 +53,16 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="restaurant in $store.state.restaurants" :key="restaurant.id">
+        <tr 
+          v-for="restaurant in $store.state.restaurants"
+          :key="restaurant.id"
+          @click="navigateAway(restaurant.website)"
+          class="tableEntry"
+        >
           <td>{{ restaurant.name }}</td>
-          <td>{{ restaurant.phone }}</td>
+          <td>
+            <a :href="'tel:' + restaurant.phone">{{ restaurant.phone }}</a>
+          </td>
           <td>
             <v-chip
               class="align-end fill-height  ma-2"
@@ -79,6 +89,12 @@ export default class RestaurantDisplay extends Vue {
     const filteredRest = this.$store.state.originalTypes.filter((item: any) => item.type === type);
     return filteredRest[0].color;
   }
+
+  private navigateAway(website: string) {
+    if (website) {
+      window.location.href = website;
+    }
+  }
 }
 </script>
 
@@ -90,5 +106,9 @@ export default class RestaurantDisplay extends Vue {
 
   .simpleTable
     width: 100%;
+
+  .restImage:hover, .tableEntry:hover
+    cursor: pointer;
+  
 </style>
 
