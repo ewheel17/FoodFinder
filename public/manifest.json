@@ -1,6 +1,6 @@
 {
-  "name": "testapp",
-  "short_name": "testapp",
+  "name": "FoodFinder",
+  "short_name": "FoodFinder",
   "icons": [
     {
       "src": "./img/icons/android-chrome-192x192.png",
