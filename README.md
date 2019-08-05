@@ -40,5 +40,13 @@ npm run lint
 npm run test:unit
 ```
 
-"Notes": Any general comments you might have about your project,
-such as known bugs or technologies you used.
+## Notes
+This application is displaying information supplied purely on the frontend. I built this 
+app in such a way that it expects a system to be set up to eventually make server calls.
+
+## Potential Enhancements
+* Ability to save and view Favorites.
+* Ability to submit new Restaurants.
+* Implement a backend to serve data, rather than using dummy data.
+* Store and retrieve restaurant information from a Database.
+* Add register/login functionality.
