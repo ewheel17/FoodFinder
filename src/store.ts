@@ -53,7 +53,7 @@ export default new Vuex.Store({
             ) &&
             !item.website.includes('http')
           ) {
-           item.website = 'http://www.' + item.website;
+           item.website = 'https://www.' + item.website;
           }
           return item;
         });
