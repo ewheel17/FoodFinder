@@ -43,7 +43,7 @@
         </v-card-text>
       </v-card>
     </v-flex>
-    <v-flex text-center>
+    <v-flex text-center v-else>
       <h4>No matches found.</h4>
     </v-flex>
   </v-layout>
