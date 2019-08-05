@@ -1,13 +1,12 @@
 <template>
-  <v-layout wrap class="cardContainer" justify-center pa-3>
+  <v-layout v-if="$store.state.currentDisplay" wrap class="cardContainer" justify-center pa-3>
     <v-flex
-      v-for="restaurant in restaurants"
+      v-for="restaurant in $store.state.restaurants"
       :key="restaurant.id"
       xs12
       sm5
       md3
-      lg2
-      ma-2
+      ma-3
     >
       <v-card
         class="mx-auto"
@@ -38,15 +37,34 @@
             </v-flex>
           </v-layout>
         </v-card-text>
-        <!-- <v-card-actions v-if="actions">
-          <v-btn icon>
-            <v-icon>mdi-heart</v-icon>
-          </v-btn>
-          <v-btn text>Click</v-btn>
-          <v-btn outlined>Click</v-btn>
-        </v-card-actions> -->
       </v-card>
     </v-flex>
+  </v-layout>
+  <v-layout v-else wrap class="cardContainer" justify-center pa-3>
+    <v-simple-table class="simpleTable">
+      <thead>
+        <tr>
+          <th class="text-left">Name</th>
+          <th class="text-left">Phone</th>
+          <th class="text-left">Type</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="restaurant in $store.state.restaurants" :key="restaurant.id">
+          <td>{{ restaurant.name }}</td>
+          <td>{{ restaurant.phone }}</td>
+          <td>
+            <v-chip
+              class="align-end fill-height  ma-2"
+              :color="getColor(restaurant.type)"
+            >
+              <v-icon left>restaurant</v-icon>
+              {{ restaurant.type }}
+            </v-chip>
+          </td>
+        </tr>
+      </tbody>
+    </v-simple-table>
   </v-layout>
 </template>
 
@@ -55,24 +73,22 @@ import { Component, Vue, Prop } from 'vue-property-decorator';
 
 @Component
 export default class RestaurantDisplay extends Vue {
-  @Prop({ type: Array, required: true })
-  restaurants!: any
-  @Prop({ type: Array, required: true })
-  restaurantTypes!: any
+  selected = [];
 
   getColor(type?: string) {
-    console.log(type);
-    const filteredRest = this.restaurantTypes.filter((item: any) => item.type === type);
+    const filteredRest = this.$store.state.originalTypes.filter((item: any) => item.type === type);
     return filteredRest[0].color;
   }
 };
 </script>
 
 <style lang="stylus" scoped>
-.cardContainer {
+.cardContainer 
   background: grey;
   height: auto;
   border-radius: 4px;
-}
+
+  .simpleTable
+    width: 100%;
 </style>
 

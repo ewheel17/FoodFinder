@@ -5,18 +5,17 @@
     color="red"
     dense
   >
-    <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
-    <v-icon class="mx-4">fab fa-youtube</v-icon>
+    <v-app-bar-nav-icon @click.stop="toggleDrawer()"></v-app-bar-nav-icon>
     <v-toolbar-title class="mr-12 align-center">
       <span class="title">FoodFinder</span>
     </v-toolbar-title>
     <v-spacer></v-spacer>
     <v-layout
       align-center
-      style="max-width: 650px"
+      style="max-width: 400px"
     >
       <v-text-field
-        :append-icon-cb="() => {}"
+        v-model="inputSearch"
         placeholder="Search..."
         single-line
         append-icon="search"
@@ -28,11 +27,22 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
+import { Component, Vue, Watch } from 'vue-property-decorator';
 
-export default Vue.extend({
-  data: () => ({
-    drawer: null,
-  }),
-});
+@Component
+export default class Navbar extends Vue {
+  inputSearch = '';
+
+  @Watch('inputSearch')
+  searchRestaurants() {
+    const matchingRestaurants = this.$store.state.originalRestaurants.filter(item => { 
+      return item.name.toLowerCase().includes(this.inputSearch.toLowerCase());
+    })
+    this.$store.commit('setRestaurants', matchingRestaurants);
+  }
+
+  toggleDrawer() {
+    this.$store.commit('toggleDrawer');
+  }
+};
 </script>

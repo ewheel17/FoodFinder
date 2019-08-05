@@ -1,5 +1,10 @@
 # FoodFinder
 
+### About
+FoodFinder is an application that displays given Restaurant data in a card or 
+list table format. The user is able to perform actions on the displayed data
+to refine their search.
+
 ### Contact Info
 Max Wheeler <br/>
 ewheel17@gmail.com <br/>
@@ -41,7 +46,7 @@ npm run test:unit
 ```
 
 ## Notes
-This application is displaying information supplied purely on the frontend. I built this 
+* This application is displaying information supplied purely on the frontend. I built this 
 app in such a way that it expects a system to be set up to eventually make server calls.
 
 ## Potential Enhancements
@@ -50,3 +55,8 @@ app in such a way that it expects a system to be set up to eventually make serve
 * Implement a backend to serve data, rather than using dummy data.
 * Store and retrieve restaurant information from a Database.
 * Add register/login functionality.
+* Many things are conditionally displayed based on values directly from state. This works here,
+but best practice would include getters in the store file. I did not include them because I wanted
+to give other aspects for attention for the time being.
+* Distinct Unit tests could be implemented to ensure quality.
+
