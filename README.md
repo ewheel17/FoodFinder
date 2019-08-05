@@ -1,5 +1,15 @@
 # FoodFinder
 
+## Contact Info
+Max Wheeler
+ewheel17@gmail.com
+
+## Technology Used
+Frontend Framework: Vue
+UI Library: Vuetify
+State Management: Vuex
+Language: Typescript
+
 ## Project setup
 ```
 npm install
@@ -30,10 +40,5 @@ npm run lint
 npm run test:unit
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
-
-"Contact Info": Your name and contact information
-"Instructions": instructions for running the project
 "Notes": Any general comments you might have about your project,
 such as known bugs or technologies you used.

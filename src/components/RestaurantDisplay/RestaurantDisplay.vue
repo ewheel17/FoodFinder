@@ -25,9 +25,19 @@
             {{ restaurant.type }}
           </v-chip>
         </v-img>
-        <v-card-title class="title">{{ restaurant.name }}</v-card-title>
-
-        <v-card-text></v-card-text>
+        <v-card-title class="title" tag="h2">{{ restaurant.name }}</v-card-title>
+        <hr>
+        <v-card-text>
+          <v-layout column>
+            <v-flex xs12>
+              <span>Contact: </span> {{ restaurant.phone }}
+            </v-flex>
+            <v-flex xs12>
+              <a v-if="restaurant.website" :href="restaurant.website" target="_blank"> Go to Website</a>
+              <span v-else>No website.</span>
+            </v-flex>
+          </v-layout>
+        </v-card-text>
         <!-- <v-card-actions v-if="actions">
           <v-btn icon>
             <v-icon>mdi-heart</v-icon>

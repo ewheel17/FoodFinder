@@ -16,7 +16,7 @@ import RestaurantDisplay from '../components/RestaurantDisplay/RestaurantDisplay
   }
 })
 export default class Home extends Vue {
-  restaurants: any;
+  restaurants: any = [];
   restaurantTypes: any;
 
   created () {
@@ -25,15 +25,24 @@ export default class Home extends Vue {
   }
 
   // Move this call to App.vue and set in store for usage.
-  getRestaurants() {
+  async getRestaurants() {
     // GQL call goes here
+    // Do validation to make sure the link is correct.
+
+    const validatedRestaurants = await restaurants.map(item => {
+      if (item.website && item.website.includes('.com') && !item.website.includes('http')) {
+       item.website = 'http://' + item.website;
+      } 
+      return item;
+    })
+    console.log(validatedRestaurants);
     this.restaurants = restaurants;
+    console.log(this.restaurants);
   }
 
   // Move this call to App.vue and set in store for usage.
   getRestaurantTypes() {
     this.restaurantTypes = restaurantTypes;
-    console.log(restaurantTypes);
   }
 };
 </script>
