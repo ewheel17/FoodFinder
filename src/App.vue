@@ -16,17 +16,17 @@ import NavigationDrawer from './components/Layout/NavigationDrawer.vue';
 @Component({
   components: {
     Navbar,
-    NavigationDrawer
-  }
+    NavigationDrawer,
+  },
 })
 export default class App extends Vue {
   @Prop({type: String})
-  source!: String
+  private source!: string;
 
-  created () {
-    (this as any).$vuetify.theme.dark = true
+  private created() {
+    (this as any).$vuetify.theme.dark = true;
     this.$store.dispatch('fetchRestaurants');
     this.$store.dispatch('fetchRestaurantTypes');
   }
-};
+}
 </script>

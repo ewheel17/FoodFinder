@@ -43,20 +43,20 @@ export default new Vuex.Store({
         // });
 
         // Do validation to make sure the link is correct (This could/should be far more elegant).
-        const validatedRestaurants = await restaurants.map(item => {
+        const validatedRestaurants = await restaurants.map((item: any) => {
           if (
-            item.website && 
+            item.website &&
             (
               item.website.includes('.com') ||
               item.website.includes('.net') ||
               item.website.includes('.org')
-            ) && 
+            ) &&
             !item.website.includes('http')
           ) {
            item.website = 'http://www.' + item.website;
-          } 
+          }
           return item;
-        })
+        });
         context.commit('setRestaurants', validatedRestaurants);
         context.commit('setOriginalRestaurants', validatedRestaurants);
       }
@@ -70,7 +70,7 @@ export default new Vuex.Store({
         context.commit('setOriginalTypes', restaurantTypes);
       }
     },
-    setFilteredTypes(context, { selected }) {
+    setFilteredTypes(context: any, { selected }) {
       if (!selected.length) {
         context.commit('setRestaurants', context.state.originalRestaurants);
         context.commit('setRestaurantTypes', context.state.originalTypes);
@@ -80,6 +80,6 @@ export default new Vuex.Store({
       const filteredRestaurants = context.state.originalRestaurants.filter((item: any) => selected.includes(item.type));
       context.commit('setRestaurants', filteredRestaurants);
       context.commit('setRestaurantTypes', filteredTypes);
-    }
+    },
   },
 });

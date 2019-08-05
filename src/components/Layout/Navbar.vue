@@ -31,18 +31,18 @@ import { Component, Vue, Watch } from 'vue-property-decorator';
 
 @Component
 export default class Navbar extends Vue {
-  inputSearch = '';
+  private inputSearch = '';
 
   @Watch('inputSearch')
-  searchRestaurants() {
-    const matchingRestaurants = this.$store.state.originalRestaurants.filter(item => { 
+  private searchRestaurants() {
+    const matchingRestaurants = this.$store.state.originalRestaurants.filter((item: any) => {
       return item.name.toLowerCase().includes(this.inputSearch.toLowerCase());
-    })
+    });
     this.$store.commit('setRestaurants', matchingRestaurants);
   }
 
-  toggleDrawer() {
+  private toggleDrawer() {
     this.$store.commit('toggleDrawer');
   }
-};
+}
 </script>

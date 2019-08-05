@@ -13,22 +13,22 @@
 export default [
   {
     type: 'Brewpub',
-    color: '#1abc9c'
+    color: '#1abc9c',
   },
   {
     type: 'Cafe',
-    color: '#9b59b6'
+    color: '#9b59b6',
   },
   {
     type: 'Sushi',
-    color: '#e67e22'
+    color: '#e67e22',
   },
   {
     type: 'Diner',
-    color: '#f1c40f'
+    color: '#f1c40f',
   },
   {
     type: 'Restaurant',
-    color: '#e74c3c'
+    color: '#e74c3c',
   },
-]
+];

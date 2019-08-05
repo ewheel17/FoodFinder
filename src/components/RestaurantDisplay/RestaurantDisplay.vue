@@ -73,13 +73,13 @@ import { Component, Vue, Prop } from 'vue-property-decorator';
 
 @Component
 export default class RestaurantDisplay extends Vue {
-  selected = [];
+  private selected = [];
 
-  getColor(type?: string) {
+  private getColor(type?: string) {
     const filteredRest = this.$store.state.originalTypes.filter((item: any) => item.type === type);
     return filteredRest[0].color;
   }
-};
+}
 </script>
 
 <style lang="stylus" scoped>

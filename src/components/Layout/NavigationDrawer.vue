@@ -48,44 +48,44 @@ import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
 
 @Component
 export default class NavigationDrawer extends Vue {
-  viewSwitch = false;
-  sortAlphaSwitch = false;
-  sortTypeSwitch = false;
-  selected = [];
+  private viewSwitch = false;
+  private sortAlphaSwitch = false;
+  private sortTypeSwitch = false;
+  private selected = [];
 
   @Watch('viewSwitch')
-  toggleDisplay() {
+  private toggleDisplay() {
     this.$store.commit('toggleDisplay');
   }
 
   @Watch('selected')
-  setFilteredTypes() {
-    this.$store.dispatch('setFilteredTypes', { selected: this.selected })
+  private setFilteredTypes() {
+    this.$store.dispatch('setFilteredTypes', { selected: this.selected });
   }
 
-  sortRestaurants(sort) {
-    const sortedRestaurants = this.$store.state.restaurants.sort(sort === 'alpha' ? this.alphaSorter : this.typeSorter)
-    this.$store.commit('setRestaurants', sortedRestaurants)
+  private sortRestaurants(sort: string) {
+    const sortedRestaurants = this.$store.state.restaurants.sort(sort === 'alpha' ? this.alphaSorter : this.typeSorter);
+    this.$store.commit('setRestaurants', sortedRestaurants);
   }
 
-  alphaSorter(a, b) {
-    if (a.name < b.name){
+  private alphaSorter(a: any, b: any) {
+    if (a.name < b.name) {
       return -1;
     }
-    if (a.name > b.name){
+    if (a.name > b.name) {
       return 1;
     }
     return 0;
   }
 
-  typeSorter(a, b) {
-    if (a.type < b.type){
+  private typeSorter(a: any, b: any) {
+    if (a.type < b.type) {
       return -1;
     }
-    if (a.type > b.type){
+    if (a.type > b.type) {
       return 1;
     }
     return 0;
   }
-};
+}
 </script>

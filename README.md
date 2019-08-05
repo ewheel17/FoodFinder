@@ -50,6 +50,9 @@ npm run test:unit
 app in such a way that it expects a system to be set up to eventually make server calls.
 
 ## Potential Enhancements
+* CRITICAL: Go back through and remove as many "any" types as possible, if not all of them.
+This is a common pitfall for devs new to Typescript, but "any" is useful for fast prototyping as long as they don't make it
+to production.
 * Ability to save and view Favorites.
 * Ability to submit new Restaurants.
 * Implement a backend to serve data, rather than using dummy data.
@@ -59,4 +62,3 @@ app in such a way that it expects a system to be set up to eventually make serve
 but best practice would include getters in the store file. I did not include them because I wanted
 to give other aspects for attention for the time being.
 * Distinct Unit tests could be implemented to ensure quality.
-
