@@ -61,5 +61,5 @@ to production.
 * Add register/login functionality.
 * Many things are conditionally displayed based on values directly from state. This works here,
 but best practice would include getters in the store file. I did not include them because I wanted
-to give other aspects for attention for the time being.
+to give other aspects more attention for the time being.
 * Distinct Unit tests could be implemented to ensure quality.
